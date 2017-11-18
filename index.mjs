@@ -27,16 +27,34 @@ const schema = new GraphQLSchema({
 
 
 const getPath = path => {
-  // eventually construct a full path here
-  const {prev, key} = path
-  return key
+
+  const builtPath = []
+
+  const handlePathPart = sp => {
+
+    let {prev, key} = sp
+
+    builtPath.push(key)
+
+    if (prev)
+      handlePathPart(prev)
+
+  }
+
+  handlePathPart(path)
+
+
+  return builtPath.join('/')
 }
 
 
 graphAddMiddleware.addMiddleware(schema, async function (root, args, context, info, next) {
   // you can modify root, args, context, info
 
+
   const path = getPath(info.path)
+
+  console.log(path)
 
   switch (path) {
     case 'youtubeV3':
@@ -44,10 +62,10 @@ graphAddMiddleware.addMiddleware(schema, async function (root, args, context, in
       break
   }
 
-
   const result = await next()
-  // you can modify result
-  return result // you must return value
+
+
+  return result
 })
 
 app.use('/graphql',

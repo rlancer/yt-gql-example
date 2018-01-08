@@ -25,6 +25,7 @@ const schema = new GraphQLSchema({
   })
 })
 
+console.log({schema})
 
 const getPath = path => {
 
@@ -74,6 +75,8 @@ app.use('/graphql',
     graphiql: true
   })
 )
+
+app.use(express.static('client/build'))
 
 
 const port = 4000

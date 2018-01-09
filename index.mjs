@@ -7,6 +7,7 @@ import gapiToGraphQL from 'gapi-to-graphql'
 import YouTubeAPI from 'gapi-to-graphql/google_apis/youtube-v3'
 import graphAddMiddleware from 'graphql-add-middleware'
 import cors from 'cors'
+import path from 'path'
 
 dotenv.config()
 const app = express()
@@ -76,7 +77,8 @@ app.use('/graphql',
   })
 )
 
-app.use(express.static('client/build'))
+app.use(
+  express.static(path.join(__dirname, '..', 'client/build')))
 
 
 const port = process.env.PORT || 4000

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node start --experimental-modules ./index.mjs",
+    "start": "node --experimental-modules ./index.mjs",
     "dev": "nodemon  --experimental-modules --inspect index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

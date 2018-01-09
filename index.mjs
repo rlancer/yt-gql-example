@@ -79,6 +79,6 @@ app.use('/graphql',
 app.use(express.static('client/build'))
 
 
-const port = 4000
+const port = process.env.PORT || 4000
 app.listen(port)
-console.log(`Please open http://localhost:${process.env.port}/graphql`)
+console.log(`Please open http://localhost:${port}/graphql`)

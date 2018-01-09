@@ -8,6 +8,9 @@ import YouTubeAPI from 'gapi-to-graphql/google_apis/youtube-v3'
 import graphAddMiddleware from 'graphql-add-middleware'
 import cors from 'cors'
 import path from 'path'
+import expose from './expose.js'
+// workaround to get dirname
+const {__dirname} = expose;
 
 dotenv.config()
 const app = express()
@@ -26,7 +29,6 @@ const schema = new GraphQLSchema({
   })
 })
 
-console.log({schema})
 
 const getPath = path => {
 
@@ -56,7 +58,6 @@ graphAddMiddleware.addMiddleware(schema, async function (root, args, context, in
 
   const path = getPath(info.path)
 
-  console.log(path)
 
   switch (path) {
     case 'youtubeV3':
@@ -77,8 +78,8 @@ app.use('/graphql',
   })
 )
 
-app.use(
-  express.static(path.join(__dirname, '..', 'client/build')))
+console.log('path', path.join(__dirname, 'client/build'))
+app.use(express.static(path.join(__dirname, 'client/build')))
 
 
 const port = process.env.PORT || 4000

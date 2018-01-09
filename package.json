@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node start --experimental-modules index.mjs",
     "dev": "nodemon  --experimental-modules --inspect index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +18,10 @@
     "graphql": "^0.11.7",
     "graphql-add-middleware": "^0.1.2",
     "graphql-tools": "^2.7.2"
+  },
+  "engines": {
+    "node": "v9.3.0",
+    "yarn": "v1.3.2"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"

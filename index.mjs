@@ -55,9 +55,7 @@ const getPath = path => {
 graphAddMiddleware.addMiddleware(schema, async function (root, args, context, info, next) {
   // you can modify root, args, context, info
 
-
   const path = getPath(info.path)
-
 
   switch (path) {
     case 'youtubeV3':
@@ -65,10 +63,7 @@ graphAddMiddleware.addMiddleware(schema, async function (root, args, context, in
       break
   }
 
-  const result = await next()
-
-
-  return result
+  return await next()
 })
 
 app.use('/graphql',

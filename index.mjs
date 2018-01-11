@@ -15,6 +15,8 @@ const {__dirname} = expose;
 dotenv.config()
 const app = express()
 
+app.use(express.static(path.join(__dirname, 'client/build')))
+
 app.use(cors())
 // need this separate assignment when using nodes experimental modules feature
 const {GraphQLObjectType, GraphQLSchema} = gql
@@ -73,8 +75,6 @@ app.use('/graphql',
   })
 )
 
-console.log('path', path.join(__dirname, 'client/build'))
-app.use(express.static(path.join(__dirname, 'client/build')))
 
 
 const port = process.env.PORT || 4000

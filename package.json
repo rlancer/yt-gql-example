@@ -20,7 +20,7 @@
     "graphql-tools": "^2.7.2"
   },
   "engines": {
-    "node": "v9.3.0",
+    "node": "v9.4.0",
     "yarn": "v1.3.2"
   },
   "devDependencies": {

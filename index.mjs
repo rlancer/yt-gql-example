@@ -10,12 +10,11 @@ import cors from 'cors'
 import path from 'path'
 import expose from './expose.js'
 // workaround to get dirname
-const {__dirname} = expose;
+const {__dirname} = expose
 
 dotenv.config()
 const app = express()
 
-app.use(express.static(path.join(__dirname, 'client/build')))
 
 app.use(cors())
 // need this separate assignment when using nodes experimental modules feature
@@ -68,14 +67,18 @@ graphAddMiddleware.addMiddleware(schema, async function (root, args, context, in
   return await next()
 })
 
-app.use('/graphql',
+const router = express.Router()
+
+
+router.use('/graphql',
   graphqlHTTP({
     schema,
     graphiql: true
   })
 )
 
-
+app.use(router)
+app.use(express.static(path.join(__dirname, 'client/build')))
 
 const port = process.env.PORT || 4000
 app.listen(port)

@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node --experimental-modules ./index.mjs",
-    "dev": "nodemon  --experimental-modules --inspect index.mjs",
+    "dev": "nodemon  --experimental-modules index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -15,16 +15,16 @@
     "express": "^4.16.2",
     "express-graphql": "^0.6.11",
     "gapi-to-graphql": "^1.0.8",
-    "graphql": "^0.11.7",
-    "graphql-add-middleware": "^0.1.2",
-    "graphql-tools": "^2.7.2"
+    "graphql": "0.12.3",
+    "graphql-add-middleware": "^0.1.3",
+    "graphql-tools": "^2.18.0"
   },
   "engines": {
     "node": "v9.4.0",
     "yarn": "v1.3.2"
   },
   "devDependencies": {
-    "nodemon": "^1.12.1"
+    "nodemon": "1.14.11"
   },
   "description": ""
 }

@@ -1,0 +1,16 @@
+# [START app_yaml]
+runtime: nodejs
+env: flex
+
+skip_files:
+- node_modules
+- client/node_modules
+- .idea
+
+manual_scaling:
+  instances: 1
+
+env_variables:
+  NODE_ENV: 'production'
+
+# [END app_yaml]
